@@ -9,13 +9,13 @@ package optimizacion.de.tela.alg.geneticos;
  *
  * @author Danny
  */
-public class OptimizacionDeTelaAlgGeneticos {
+public class OptimizacionDeTela {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Interface admin = new Interface();
     }
     
 }
