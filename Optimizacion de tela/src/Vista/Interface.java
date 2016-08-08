@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package optimizacion.de.tela.alg.geneticos;
+package Vista;
 
 import java.awt.Toolkit;
 
@@ -123,7 +123,7 @@ public class Interface extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(56, 126, 292, 165);
+        jPanel1.setBounds(56, 126, 0, 0);
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -210,14 +210,15 @@ public class Interface extends javax.swing.JFrame {
                 .addGap(9, 9, 9)
                 .addComponent(jLabel8)
                 .addGap(11, 11, 11)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(altoPieza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(anchoPieza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(anchoPieza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -226,7 +227,7 @@ public class Interface extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(26, 344, 361, 327);
+        jPanel2.setBounds(26, 344, 0, 0);
 
         jLabel10.setText("FITNES=");
         getContentPane().add(jLabel10);
@@ -247,7 +248,7 @@ public class Interface extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel4);
-        jPanel4.setBounds(521, 126, 663, 442);
+        jPanel4.setBounds(521, 126, 0, 0);
 
         jButton2.setText("OPTIMIZAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -309,11 +310,10 @@ public class Interface extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel5);
-        jPanel5.setBounds(521, 613, 663, 104);
+        jPanel5.setBounds(521, 613, 0, 0);
         getContentPane().add(jLabel16);
         jLabel16.setBounds(896, 76, 0, 0);
 
-        jLabel17.setIcon(new javax.swing.ImageIcon("C:\\Universidad\\I.A.II\\Algoritmos-Geneticos\\Optimizacion de tela\\simple_1440.png")); // NOI18N
         jLabel17.setText("jLabel17");
         getContentPane().add(jLabel17);
         jLabel17.setBounds(0, 0, 1220, 750);
