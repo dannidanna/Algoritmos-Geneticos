@@ -9,6 +9,12 @@ package Modelo;
  *
  * @author santiago
  */
-public class Material {
+public class Material extends Objeto{
+
+    public Material(Medida alto, Medida ancho, String name) {
+        super(alto, ancho, name);
+    }
+
+   
     
 }

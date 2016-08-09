@@ -3,19 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Controlador;
+
+import Vista.Interface;
 
 /**
  *
  * @author santiago
  */
-public class Piece extends Objeto{
-
-    public Piece(Medida alto, Medida ancho, String name) {
-        super(alto, ancho, name);
-    }
-
-   
-    
-    
+public class Main {
+    public static void main(String[] arg)
+    {
+         Controlador control = Controlador.getControlador();
+        new Interface(); 
+    }  
 }

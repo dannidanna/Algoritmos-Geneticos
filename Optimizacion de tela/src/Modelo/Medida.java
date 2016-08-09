@@ -10,5 +10,21 @@ package Modelo;
  * @author santiago
  */
 public class Medida {
+    private int size;
+    private String united;
+
+    public Medida(int size, String united) {
+        this.size = size;
+        this.united = united;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public String getUnited() {
+        return united;
+    }
+    
     
 }
