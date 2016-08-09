@@ -5,6 +5,9 @@
  */
 package Controlador;
 
+import Modelo.Material;
+import Modelo.Objeto;
+import Modelo.Population;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +17,7 @@ import java.util.ArrayList;
 public class Controlador 
 {
     public static Controlador control;
-
+    private int cant_individuos=5;
     
     public static Controlador getControlador()
     {

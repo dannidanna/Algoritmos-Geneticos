@@ -5,10 +5,31 @@
  */
 package Modelo;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author santiago
  */
 public class Population {
+
+  private ArrayList<Individual> individuos;
+/**
+ * este metodo genera una poblacion inicial
+ * @param material
+ * @param obs
+ * @param cant_individuos
+ * @return 
+ */
+    public Population generatePopulation(Material material, ArrayList<Objeto> obs, int cant_individuos) {
+        for (int i = 0; i < cant_individuos; i++) {
+            Individual individual = new Individual(material.getAlto(),material.getAncho());
+            individual.setObj_pieces(obs);
+            individual.generateIndividual();
+            individuos.add(individual);
+        }
+        return this;
+    }
+    
     
 }
