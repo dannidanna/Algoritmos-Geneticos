@@ -64,12 +64,14 @@ public class AlgorithmG {
       * @return 
       */
     public Population evolvePopulation(Population pop) {
-         for (int i = 0; i < cant_individuos; i++) {
-            Individual indiv1 = tournamentSelection(pop);
-            Individual indiv2 = tournamentSelection(pop);
-            Individual newIndiv = crossover(indiv1, indiv2);
+         //for (int i = 0; i < cant_individuos; i++) {
+            Individual indiv1      = tournamentSelection(pop);
+            Individual indiv2      = tournamentSelection(pop);
+            Population newPopul    = reprodictionIndividual(indiv1,indiv2);
+            Population newEvol     = crossover(newPopul);
+            Population newMutation = mutate(newEvol);
            
-        }
+        //}
              // Mutate population
 //        for (int i = cant_individuos; i < newPopulation.size(); i++) {
 //            mutate(newPopulation.getIndividual(i));
@@ -78,15 +80,20 @@ public class AlgorithmG {
 //        return newPopulation;
 
        
-        return null;
+        return newMutation;
     }
   // Crossover individuals, es para cruzar individuos, este caso puede ser piezas
-    private  Individual crossover(Individual indiv1, Individual indiv2) {
-      return null;
-    }
+//    private  Individual crossover(Individual indiv1, Individual indiv2) {
+//      return null;
+//    }
         // Mutate an individual
+    /**
+     * este metodo no esta siendo usado
+     * @param indiv 
+     */
     private  void mutate(Individual indiv) {
         // Loop through genes
+        ///
         //el limite 10 debe ser sustituido por el tamanio de individus
         for (int i = 0; i < 10; i++) {
             if (Math.random() <= mutation_chance) {
@@ -96,9 +103,39 @@ public class AlgorithmG {
         }
     }
 
-    // selecciona individuos para el cruce
+    /**
+     * selecciona individuos para el cruce
+     * @param pop
+     * @return 
+     */
     private  Individual tournamentSelection(Population pop) {
-       return null;
+        int size=pop.cantIndividual();  
+         int fitness_mejor=10000;// iniciando en 100 porque el fitnes es cada
+         int pos_mejor=0;
+        ArrayList<Individual> individuos= pop.getIndividuos();
+        
+        for (int i = 0; i < size; i++) {
+            Individual aux_ind = individuos.get(i);
+            int fitness_aux=aux_ind.getFitness();
+            if(fitness_aux<fitness_mejor&&!aux_ind.isSelected()){
+             fitness_mejor= fitness_aux;
+             pos_mejor=i;
+            }
+           }
+        return individuos.get(pos_mejor);
+     
+    }
+
+    private Population reprodictionIndividual(Individual indiv1, Individual indiv2) {
+     return null;
+    }
+
+    private Population crossover(Population newPopul) {
+     return null;
+    }
+
+    private Population mutate(Population newEvol) {
+     return null;
     }
     
 }

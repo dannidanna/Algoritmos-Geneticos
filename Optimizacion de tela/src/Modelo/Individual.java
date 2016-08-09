@@ -15,6 +15,7 @@ public class Individual {
     private Objeto [][] pieces;
     private ArrayList<Objeto> obj_pieces;
     private int fitness;
+    private boolean selected;
         // Create a random individual
   /**
    *  este es para definir el tamanio de la tela
@@ -24,6 +25,7 @@ public class Individual {
     public Individual(Medida alto,Medida ancho){
     pieces = new Objeto[alto.getSize()][ancho.getSize()];
     fitness=0;
+    selected = false;
     }
     /**
      * este metodo genera un plano donde
@@ -126,5 +128,14 @@ public class Individual {
     public Objeto[][] getPieces() {
         return pieces;
     }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+    
     
 }

@@ -14,6 +14,11 @@ import java.util.ArrayList;
 public class Population {
 
   private ArrayList<Individual> individuos;
+  private boolean selected;
+  public Population(){
+  individuos = new ArrayList<>();
+  
+  }
 /**
  * este metodo genera una poblacion inicial
  * @param material
@@ -33,6 +38,18 @@ public class Population {
     public Individual getIndividualMejor(){
     return null;
     }
-    
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+    public int cantIndividual(){
+     return individuos.size();
+    }
+
+    public ArrayList<Individual> getIndividuos() {
+        return individuos;
+    }
+
+   
     
 }
