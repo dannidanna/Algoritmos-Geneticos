@@ -25,6 +25,15 @@ public class Medida {
     public String getUnited() {
         return united;
     }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public void setUnited(String united) {
+        this.united = united;
+    }
+    
     
     
 }

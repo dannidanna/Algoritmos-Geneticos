@@ -58,18 +58,65 @@ public class Individual {
 
     private void acomodar(Piece piece) {
             byte num_alt= (byte)(Math.random()*2);// es para comensar con alto o con el ancho
+            Medida m_alto = piece.getAlto();
+            Medida m_ancho = piece.getAncho();
             int alto=0; 
             int ancho=0;
             if(num_alt==0){
-             alto= piece.getAlto().getSize();
-             ancho= piece.getAncho().getSize();
+             alto= m_alto.getSize();
+             ancho= m_ancho.getSize();
             }else{
-             ancho= piece.getAlto().getSize();
-             alto= piece.getAncho().getSize();
+             ancho= m_ancho.getSize();
+             alto= m_alto.getSize();
+            }
+            byte posX=posX();
+            byte posY=posY();
+            
+           // while(!acomodo(piece,alto,ancho,posX,posY)){
+           m_alto.setSize(alto);
+           m_ancho.setSize(ancho);
+           piece.setAlto(m_alto);
+           piece.setAncho(m_ancho);
+           while(!acomodo(piece,posX,posY)){
+              posX=posX();
+              posY=posY();
             }
             
             //////sigo desarrollando esta parte
             
             
+    }
+
+    private boolean acomodo(Piece piece, byte posX, byte posY) {
+        
+      boolean res =true;// es para saber si esta vacion el lugar para acomodar la pieza
+      int alto= piece.getAlto().getSize();
+      int ancho=piece.getAncho().getSize();
+      int visitadosX=0;
+      int visitadosY=0;
+        while (res&&posX<pieces.length&&posX<alto) {            
+            while (res&&posY<pieces[0].length&&posY<ancho) {                
+                if(pieces[posX][posY]!=null)
+                    res =false;
+                posY++;
+            }
+            posX++;
+        }
+        //int totalV= posX*posY;
+        if(res==true&&(posX*posY==alto*ancho)) 
+            insertarPiezas(piece,posX,posY);
+      
+      
+     return res;
+    }
+
+    private void insertarPiezas(Piece piece, byte posX, byte posY) {
+      int alto= piece.getAlto().getSize();
+      int ancho=piece.getAncho().getSize();
+        for (; posX < alto; posX++) {
+            for (; posY < ancho; posY++) {
+                pieces[posX][posY]= piece;
+            }
+        }
     }
 }
