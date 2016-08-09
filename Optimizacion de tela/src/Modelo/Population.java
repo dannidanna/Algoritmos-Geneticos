@@ -30,6 +30,9 @@ public class Population {
         }
         return this;
     }
+    public Individual getIndividualMejor(){
+    return null;
+    }
     
     
 }

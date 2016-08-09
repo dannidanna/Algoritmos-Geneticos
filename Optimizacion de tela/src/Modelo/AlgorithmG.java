@@ -22,6 +22,8 @@ public class AlgorithmG {
      * @param obs  es una lista de objetos p
      * @return retorna una plano inicial
      */
+ 
+ 
      public  Population inicialPopulation(ArrayList<Objeto> obs) {
          Population populat=null;
          Material material=getMaterial(obs);
@@ -29,6 +31,17 @@ public class AlgorithmG {
          
         return populat;
      }
+     
+     
+ 
+     
+     
+     
+     /**
+      * es para obtener la tela que sera cortado o su caso marcado
+      * @param obs es una lista donde estan las [piesas y la tela
+      * @return 
+      */
      private Material getMaterial(ArrayList<Objeto> obs){
          boolean bandera = false;
          Material material=null;
@@ -43,10 +56,27 @@ public class AlgorithmG {
         }
         return material;
      }
-  /* Public metodos */
+ 
     
-    // Retorna la poblacino evolucionada
-    public  Population evolvePopulation(Population pop) {
+    /**
+      * este metodo mustra la nueva evolucion
+      * @param pop
+      * @return 
+      */
+    public Population evolvePopulation(Population pop) {
+         for (int i = 0; i < cant_individuos; i++) {
+            Individual indiv1 = tournamentSelection(pop);
+            Individual indiv2 = tournamentSelection(pop);
+            Individual newIndiv = crossover(indiv1, indiv2);
+           
+        }
+             // Mutate population
+//        for (int i = cant_individuos; i < newPopulation.size(); i++) {
+//            mutate(newPopulation.getIndividual(i));
+//        }
+//
+//        return newPopulation;
+
        
         return null;
     }

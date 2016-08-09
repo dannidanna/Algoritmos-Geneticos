@@ -40,8 +40,11 @@ public class Individual {
         this.obj_pieces = obj_pieces;
     }
     
-    public Individual getFittest() {
-       return null;
+    public int getFitness() {
+        if (fitness == 0) {
+            fitness = FitnessCalc.getFitness(this);
+        }
+        return fitness;
     }
 
 
@@ -119,4 +122,9 @@ public class Individual {
             }
         }
     }
+
+    public Objeto[][] getPieces() {
+        return pieces;
+    }
+    
 }
