@@ -10,6 +10,10 @@ package Modelo;
  * @author santiago
  */
 public class FitnessCalc {
+
+    public FitnessCalc() {
+    }
+    
        
     /**
      * calcula el fitnes , cuanto mas optimizado retorna un 
@@ -17,41 +21,90 @@ public class FitnessCalc {
      * @param individual
      * @return retorna el fitnes menor
      */
-    public static int getFitness(Individual individual) {
+    public  int getFitness(Individual individual) {
+        System.out.println("holafitnes");
        return alto(individual)*ancho(individual) ;
         
     
     }
 
-    private static int alto(Individual individual) {
-        Objeto [][] pieces = individual.getPieces();
-        int altoF=0;
-        int cantF=0;
-        for (int j = 0; j < pieces[0].length ; j++) {
-            for (int i = 0; i < pieces.length; i++) {
+    private  int alto(Individual individual) {
+        
+        System.out.println("ENTRPPPPPPPPPPPPP");
+          Objeto [][] pieces = individual.getPieces();
+        int altoIni=1000;
+        int altoFin=0;
+        
+        int altoIniAux=0;
+        int altoFinAux=0;
+        
+        boolean iniEncontrado=false;
+        
+        for (int j = 0; j < pieces.length ; j++) {
+            for (int i = 0; i < pieces[0].length; i++) {
                 if (pieces[i][j]!=null) {
-                    cantF++;
+                     
+                     if(!iniEncontrado){
+                         altoIniAux=i;
+                         iniEncontrado=true;
+                       
+                     }else{
+                       altoFinAux=i;
+                     }
                 }
             }
-            if(cantF>altoF)
-                altoF= cantF;
+            iniEncontrado=false;
+            if(altoIniAux<altoIni){
+              altoIni = altoIniAux;
+            }
+            if(altoFinAux>altoFin){
+              altoFin = altoFinAux;
+            }     
+            
+            //inidividual.setAltoIni(AltoIni); desabilitar para almacenar el ini  
+            //inidividual.setAltoFin(AltoFin);desabilitar para almacenar el fin  
         }
-        return altoF;
+        int alto =  altoFin-altoIni+1;
+        System.out.println("fit altossss: " +alto);
+        return alto;
     }
 
-    private static int ancho(Individual individual) {
+    private int ancho(Individual individual) {
            Objeto [][] pieces = individual.getPieces();
-        int anchoF=0;
-        int cantF=0;
+        int anchoIni=1000;
+        int anchoFin=0;
+        
+        int anchoIniAux=0;
+        int anchoFinAux=0;
+        
+        boolean iniEncontrado=false;
+        
         for (int i = 0; i < pieces.length ; i++) {
-            for (int j = 0; j < pieces.length; j++) {
+            for (int j = 0; j < pieces[0].length; j++) {
                 if (pieces[i][j]!=null) {
-                    cantF++;
+                     
+                     if(!iniEncontrado){
+                         anchoIniAux=j;
+                         iniEncontrado=true;
+                       
+                     }else{
+                       anchoFinAux=j;
+                     }
                 }
             }
-            if(cantF>anchoF)
-                anchoF= cantF;
+            iniEncontrado=false;
+            if(anchoIniAux<anchoIni){
+              anchoIni = anchoIniAux;
+            }
+            if(anchoFinAux>anchoFin){
+              anchoFin = anchoFinAux;
+            }     
+            
+            //inidividual.setAnchIni(anchoIni); desabilitar para almacenar el ini  
+            //inidividual.setAnchFin(anchoFin);desabilitar para almacenar el fin  
         }
-        return anchoF;
+        int ancho =  anchoFin-anchoIni+1;
+        System.out.println("fit altossss: " +ancho);
+        return ancho;
     }
 }

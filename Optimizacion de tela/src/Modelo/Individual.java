@@ -18,7 +18,8 @@ public class Individual {
     private int fitness;
     private boolean selected;
     private String name;
-        // Create a random individual
+    private FitnessCalc fitnessCal;
+        
   /**
    *  este es para definir el tamanio de la tela
    * @param alto
@@ -31,6 +32,7 @@ public class Individual {
     fitness=0;
     selected = false;
     name="";
+    fitnessCal = new FitnessCalc();
     }
 
     public String getName() {
@@ -57,6 +59,10 @@ public class Individual {
                  pieces[i][j]=null;
             }
         }
+            fitness=0;
+    selected = false;
+    name="";
+    fitnessCal = new FitnessCalc();
     }
     /**
      * retorna la cantidad de piezas
@@ -76,7 +82,9 @@ public class Individual {
     
     public int getFitness() {
         if (fitness == 0) {
-            fitness = FitnessCalc.getFitness(this);
+            fitness = fitnessCal.getFitness(this);
+            
+            
         }
         return fitness;
     }
@@ -119,32 +127,7 @@ public class Individual {
            piece.setAlto(m_alto);
            piece.setAncho(m_ancho);
         } while (!acomodo(piece,posX(),posY()));
-//            int num_alt= (int)(Math.random()*2);// es para comensar con alto o con el ancho
-//            Medida m_alto = piece.getAlto();
-//            Medida m_ancho = piece.getAncho();
-//            int alto=0; 
-//            int ancho=0;
-//            if(num_alt==0){
-//             alto= m_alto.getSize();
-//             ancho= m_ancho.getSize();
-//            }else{
-//             alto= m_ancho.getSize();
-//             ancho= m_alto.getSize();
-//            }
-//            int posX=posX();
-//            int posY=posY();
-//            
-//           // while(!acomodo(piece,alto,ancho,posX,posY)){
-//           m_alto.setSize(alto);
-//           m_ancho.setSize(ancho);
-//           piece.setAlto(m_alto);
-//           piece.setAncho(m_ancho);
-//           //System.out.println("entro a acomodar la pieza");
-//           while(!acomodo(piece,posX,posY)){
-//              posX=posX();
-//              posY=posY();
-//               System.err.println("entro....While acomodo: " +piece.getName());
-//            }    
+ 
             
     }
 
@@ -155,7 +138,7 @@ public class Individual {
       int ancho=piece.getAncho().getSize();
       int altoIni=alto;
       int anchoIni= ancho;
-      System.out.println("entro a acomodo.pos x:" + posX + " y: "+posY+" alto: "+alto+" ancho:"+ancho+"pieza: " + piece.getName());
+      //System.out.println("entro a acomodo.pos x:" + posX + " y: "+posY+" alto: "+alto+" ancho:"+ancho+"pieza: " + piece.getName());
       int i= posX;
       int j = posY;
        alto =  alto +posX;

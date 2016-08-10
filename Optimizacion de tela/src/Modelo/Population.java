@@ -33,6 +33,17 @@ public class Population {
     public void setName(String name) {
         this.name = name;
     }
+    public int cantIndividual(){
+     return individuos.size();
+    }
+   /**
+    * retorna todo los individuos en este caso los posibles
+    * formas de acomodar las piezas
+    * @return 
+    */
+    public ArrayList<Individual> getIndividuos() {
+        return individuos;
+    }
     
 /**
  * este metodo genera una poblacion inicial
@@ -49,6 +60,7 @@ public class Population {
             individual.setObj_pieces(obs);
             individual.generateIndividual();
             individual.setName("individual"+i);
+            System.out.println("Fitness individual "+i+": "+individual.getFitness());
             individuos.add(individual);
          
         }
@@ -73,17 +85,7 @@ public class Population {
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
-    public int cantIndividual(){
-     return individuos.size();
-    }
-   /**
-    * retorna todo los individuos en este caso los posibles
-    * formas de acomodar las piezas
-    * @return 
-    */
-    public ArrayList<Individual> getIndividuos() {
-        return individuos;
-    }
+
     /**
      * aniade nuevos individuos
      * @param newInd 

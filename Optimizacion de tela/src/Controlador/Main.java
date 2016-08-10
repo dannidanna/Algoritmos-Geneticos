@@ -5,6 +5,7 @@
 package Controlador;
 
 import Modelo.AlgorithmG;
+import Modelo.Generacion;
 import Modelo.Individual;
 import Modelo.Material;
 import Modelo.Medida;
@@ -22,7 +23,11 @@ public class Main {
     {
         Controlador control  = Controlador.getControlador();
         AlgorithmG ag1 = new AlgorithmG();
+        Generacion generacion = new Generacion();
+        control.setGeneracion(generacion);
         control.setAlgorithmG(ag1);
+        // esta es la froma que debes crear objetos 
+        // Piece(medida(alto,unidad),medida(ancho,unidad),nombre de la pieza)
         Piece p1             = new Piece(new Medida(3,"cm"),new Medida(4,"cm"),"p1");
         Piece p2             = new Piece(new Medida(3,"cm"),new Medida(3,"cm"),"p2");
         Piece p3             = new Piece(new Medida(2,"cm"),new Medida(1,"cm"),"p3");
@@ -36,19 +41,54 @@ public class Main {
         obj.add(p3);
         obj.add(p4);
         obj.add(p5);
-        Individual ind1 = control.inicio(obj);
+        Individual ind1 = control.inicio(obj);//este es la forma que dedes llamar , para mostrar las piesas en el interfaz
+        int cant_indi=ag1.getPopulation().cantIndividual();
+        //System.out.println("Mejor Poblacion: " + control.getMejorPopulation().getIndividualMejor().getName());
+        //System.out.println("Cantidad de individuos: " + cant_indi);
+        System.out.println("=====================================================");
         System.out.println("la matriz es de: " + ind1.getName());
+        System.out.println("Fitness: " + ind1.getFitness());
         Objeto [][] piezas= ind1.getPieces();
         
-        print(piezas);
+        printIni(piezas);
         
+        for (int i = 0; i < 10000; i++) {
+            
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////
+        
+        Individual newInd1 = control.optimizar();
+        
+        System.out.println("=====================================================");
+        System.out.println("la matriz es de: " + newInd1.getName());
+        System.out.println("Fitness: " + newInd1.getFitness());
+        Objeto [][] newPiezas= newInd1.getPieces();
+        
+        
+        printOptimizar1(newPiezas);
+        ////////////////////////////////////////////////////////////////////////////////////////////
         
         
         
         //new Interface(); 
     }  
 
-    private static void print(Objeto[][] piezas) {
+    private static void printIni(Objeto[][] piezas) {
+        
+        for (int i = 0; i < piezas.length; i++) {
+            for (int j = 0; j <piezas[0].length; j++) {
+                if(piezas[i][j]!=null)
+                    System.out.print(piezas[i][j].getName());
+                else
+                    System.out.print("v*");
+            }
+            System.out.println();
+        }
+        System.out.println("=============================================================");
+    }
+
+   
+    private static void printOptimizar1(Objeto[][] piezas) {
         
         for (int i = 0; i < piezas.length; i++) {
             for (int j = 0; j <piezas[0].length; j++) {
