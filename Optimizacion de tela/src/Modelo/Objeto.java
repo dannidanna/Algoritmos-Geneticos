@@ -20,6 +20,10 @@ public class Objeto {
         this.name = name;
     }
 
+    public String getName() {
+        return name;
+    }
+
 
     public Medida getAlto() {
         return alto;

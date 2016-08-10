@@ -21,7 +21,7 @@ public class Controlador
     public static Controlador control;
     public Population population;
     public AlgorithmG algorithmG;
-    private int cant_individuos=5;
+    private int cant_individuos=6;
     
     public static Controlador getControlador()
     {
@@ -31,6 +31,15 @@ public class Controlador
         }
         return control;
     }
+
+    public void setPopulation(Population population) {
+        this.population = population;
+    }
+
+    public void setAlgorithmG(AlgorithmG algorithmG) {
+        this.algorithmG = algorithmG;
+    }
+    
     /**
      * este metodo retorna una plano de piezas acomodas
      * a un inicio
@@ -39,8 +48,8 @@ public class Controlador
      * @return 
      */
     public Individual inicio(ArrayList<Objeto> obs){
-        algorithmG.inicialPopulation(obs);
-     return population.getIndividualMejor();
+        Population pop =  algorithmG.inicialPopulation(obs);
+     return pop.getIndividualMejor();
     }
     /**
      * este metodo retorna las piezas mejor acomodadas

@@ -13,6 +13,7 @@ import java.util.ArrayList;
  */
 public class Individual {
     private Objeto [][] pieces;
+    private int m,n;
     private ArrayList<Objeto> obj_pieces;
     private int fitness;
     private boolean selected;
@@ -23,7 +24,9 @@ public class Individual {
    * @param ancho 
    */
     public Individual(Medida alto,Medida ancho){
-    pieces = new Objeto[alto.getSize()][ancho.getSize()];
+    m= alto.getSize();
+    n=ancho.getSize();
+    pieces = new Objeto[m][n];
     fitness=0;
     selected = false;
     }
@@ -37,7 +40,25 @@ public class Individual {
             acomodar(piece);       
             }
     }
+    public void reIniciar(){
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                 pieces[i][j]=null;
+            }
+        }
+    }
+    /**
+     * retorna la cantidad de piezas
+     * @return 
+     */
+    public int cantPieces(){
+    return obj_pieces.size();
+    }
 
+    public ArrayList<Objeto> getObj_pieces() {
+        return obj_pieces;
+    }
+    
     public void setObj_pieces(ArrayList<Objeto> obj_pieces) {
         this.obj_pieces = obj_pieces;
     }
@@ -51,18 +72,20 @@ public class Individual {
 
 
 
-    private byte posX() {
-  byte posX = (byte) Math.round(Math.random()*pieces[0].length);
+    private int posX() {
+  byte posX = (byte) Math.round(Math.random()*m);
+       
       return posX;       
     }
 
-    private byte posY() {
-   byte posY = (byte) Math.round(Math.random()*pieces.length);
+    private int posY() {
+   byte posY = (byte) Math.round(Math.random()*n);
+  
    return posY;
     }
 
     private void acomodar(Piece piece) {
-            byte num_alt= (byte)(Math.random()*2);// es para comensar con alto o con el ancho
+            int num_alt= (int)(Math.random()*2);// es para comensar con alto o con el ancho
             Medida m_alto = piece.getAlto();
             Medida m_ancho = piece.getAncho();
             int alto=0; 
@@ -71,56 +94,78 @@ public class Individual {
              alto= m_alto.getSize();
              ancho= m_ancho.getSize();
             }else{
-             ancho= m_ancho.getSize();
-             alto= m_alto.getSize();
+             alto= m_ancho.getSize();
+             ancho= m_alto.getSize();
             }
-            byte posX=posX();
-            byte posY=posY();
+            int posX=posX();
+            int posY=posY();
             
            // while(!acomodo(piece,alto,ancho,posX,posY)){
            m_alto.setSize(alto);
            m_ancho.setSize(ancho);
            piece.setAlto(m_alto);
            piece.setAncho(m_ancho);
+           //System.out.println("entro a acomodar la pieza");
            while(!acomodo(piece,posX,posY)){
               posX=posX();
               posY=posY();
-            }
-            
-            //////sigo desarrollando esta parte
-            
+               System.err.println("entro....While acomodo: " +piece.getName());
+            }    
             
     }
 
-    private boolean acomodo(Piece piece, byte posX, byte posY) {
-        
+    private boolean acomodo(Piece piece, int posX, int posY) {
+  
       boolean res =true;// es para saber si esta vacion el lugar para acomodar la pieza
       int alto= piece.getAlto().getSize();
       int ancho=piece.getAncho().getSize();
-      int visitadosX=0;
-      int visitadosY=0;
-        while (res&&posX<pieces.length&&posX<alto) {            
-            while (res&&posY<pieces[0].length&&posY<ancho) {                
-                if(pieces[posX][posY]!=null)
+      int altoIni=alto;
+      int anchoIni= ancho;
+      System.out.println("entro a acomodo.pos x:" + posX + " y: "+posY+" alto: "+alto+" ancho:"+ancho+"pieza: " + piece.getName());
+      int i= posX;
+      int j = posY;
+       alto =  alto +posX;
+       ancho= ancho+posY;
+     // int visitadosX=0;
+     // int visitadosY=0;
+        while (res&&posX<m&&posX<alto) {            
+            while (res&&posY<n&&posY<ancho) {                
+                
+                if(pieces[posX][posY]!=null){
                     res =false;
+                    System.out.println("no esta vacio matriz para: " +piece.getName());
+                }
+                    //System.out.println("esta vacion la matriz###########");
                 posY++;
             }
             posX++;
         }
         //int totalV= posX*posY;
-        if(res==true&&(posX*posY==alto*ancho)) 
-            insertarPiezas(piece,posX,posY);
+        int auxAlto= posX-i;
+        int auxAncho = posY-j;
+        
+        if (((auxAlto*auxAncho)!=altoIni*anchoIni)) {
+            res=false;
+        }
+        
+        if(res==true&&((auxAlto*auxAncho)==altoIni*anchoIni)) {
+            insertarPiezas(piece,i,j);
+        //System.out.println("entro a acomodo....if_llama a inserta pieza");
+        }
       
       
      return res;
     }
 
-    private void insertarPiezas(Piece piece, byte posX, byte posY) {
+    private void insertarPiezas(Piece piece, int i, int j) {
       int alto= piece.getAlto().getSize();
       int ancho=piece.getAncho().getSize();
-        for (; posX < alto; posX++) {
-            for (; posY < ancho; posY++) {
-                pieces[posX][posY]= piece;
+       alto =  alto +i;
+       ancho= ancho+j;
+        for (int posI=i;posI < alto; posI++) {
+            for (int posJ=j; posJ < ancho; posJ++) {
+                pieces[posI][posJ]= piece;
+                System.out.println("insertadndo: " + piece.getName());
             }
         }
     }

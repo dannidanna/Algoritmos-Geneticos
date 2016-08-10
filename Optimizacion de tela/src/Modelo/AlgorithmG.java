@@ -13,9 +13,15 @@ import java.util.ArrayList;
  */
 public class AlgorithmG {
  private static final double  mutation_chance=0.2;
- private static final int pressure=3;
- private static final int cant_individuos=5;
+ private static final int pressure=2;
+ private static final int cant_individuos=6;
  private Population population;
+
+    public AlgorithmG() {
+        population = new Population();
+    }
+ 
+ 
     /**
      * este metodo recibe todos los objetos introducidos 
      * ya sea piezas o el material, para luego formar una poblacion inicial
@@ -51,6 +57,7 @@ public class AlgorithmG {
             if(objeto instanceof Material){
               material= (Material)obs.remove(i);
              bandera=true;
+                //System.out.println("agarro el material");
             }
             i++;
         }
@@ -65,7 +72,9 @@ public class AlgorithmG {
       */
     public Population evolvePopulation(Population pop) {
          //for (int i = 0; i < cant_individuos; i++) {
+           String name="";
             Individual indiv1      = tournamentSelection(pop);
+            
             Individual indiv2      = tournamentSelection(pop);
             Population newPopul    = reprodictionIndividual(indiv1,indiv2);
             Population newEvol     = crossover(newPopul);
@@ -122,20 +131,63 @@ public class AlgorithmG {
              pos_mejor=i;
             }
            }
-        return individuos.get(pos_mejor);
+        Individual res =individuos.get(pos_mejor);
+        
+        return res;
      
     }
 
     private Population reprodictionIndividual(Individual indiv1, Individual indiv2) {
-     return null;
+        ArrayList<Individual> newInd = new ArrayList<>();
+         for (int i = 0; i < cant_individuos/pressure; i++) {
+             newInd.add(indiv1);
+            
+        }
+         for (int i = 0; i < cant_individuos/pressure; i++) {
+             newInd.add(indiv2);
+            
+        }
+         Population newPop= new Population(newInd);
+              
+     return newPop;
     }
-
+/**
+ * se cruza la poclacion en este caso 
+ * son 6 individuos en cada poblacion
+ * @param newPopul
+ * @return 
+ */
     private Population crossover(Population newPopul) {
-     return null;
+        Population newPopC=new Population();
+        ArrayList<Individual> ind =  newPopul.getIndividuos();
+        newPopC.addIndividual(ind.get(0));
+        int j=3;
+        int i=1;
+        for (i = 1; i <=2 ; i++) {
+           Individual newInd = cross(ind.get(i),ind.get(j));
+           newPopC.addIndividual(newInd);
+        }
+         j=4;
+        for (i = 1; i <=2 ; i++) {
+           Individual newInd = cross(ind.get(i),ind.get(j));
+           newPopC.addIndividual(newInd);
+        }        
+     return newPopC;
     }
 
     private Population mutate(Population newEvol) {
      return null;
+    }
+   public int random(){
+    return (int)(Math.random()*2);
+   }
+    private Individual cross(Individual ind1, Individual ind2) {
+        ArrayList<Objeto> piezas = ind1.getObj_pieces();
+        for (int i = 0; i < piezas.size(); i++) {
+            ind1.reIniciar();
+            ind1.generateIndividual();
+        }
+        return ind1;
     }
     
 }
