@@ -422,6 +422,7 @@ public class Interface extends javax.swing.JFrame {
         int anchoPieza = Integer.parseInt(anchoPi);
         altoP.setText("");
         anchoP.setText("");
+        
     }//GEN-LAST:event_btnTamPiezaActionPerformed
 
     private void btnOptimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOptimizarActionPerformed

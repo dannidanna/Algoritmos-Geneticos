@@ -29,38 +29,80 @@ public class FitnessCalc {
     }
 
     private  int alto(Individual individual) {
-        Objeto [][] pieces = individual.getPieces();
-        int altoF=0;
-        int cantF=0;
+          Objeto [][] pieces = individual.getPieces();
+        int altoIni=1000;
+        int altoFin=0;
+        
+        int altoIniAux=0;
+        int altoFinAux=0;
+        
+        boolean iniEncontrado=false;
+        
         for (int j = 0; j < pieces.length ; j++) {
             for (int i = 0; i < pieces[0].length; i++) {
                 if (pieces[i][j]!=null) {
-                    cantF++;
+                     
+                     if(!iniEncontrado){
+                         altoIniAux=i;
+                         iniEncontrado=true;
+                       
+                     }else{
+                       altoFinAux=i;
+                     }
                 }
             }
-            if(cantF>altoF)
-                altoF= cantF;
-            cantF=0;
+            iniEncontrado=false;
+            if(altoIniAux<altoIni){
+              altoIni = altoIniAux;
+            }
+            if(altoFinAux>altoFin){
+              altoFin = altoFinAux;
+            }     
+            
+            //inidividual.setAltoIni(AltoIni); desabilitar para almacenar el ini  
+            //inidividual.setAltoFin(AltoFin);desabilitar para almacenar el fin  
         }
-        System.out.println("fit alto: " +altoF);
-        return altoF;
+        int alto =  altoFin-altoIni+1;
+        System.out.println("fit altossss: " +alto);
+        return alto;
     }
 
     private int ancho(Individual individual) {
            Objeto [][] pieces = individual.getPieces();
-        int anchoF=0;
-        int cantF=0;
+        int anchoIni=1000;
+        int anchoFin=0;
+        
+        int anchoIniAux=0;
+        int anchoFinAux=0;
+        
+        boolean iniEncontrado=false;
+        
         for (int i = 0; i < pieces.length ; i++) {
             for (int j = 0; j < pieces[0].length; j++) {
                 if (pieces[i][j]!=null) {
-                    cantF++;
+                     
+                     if(!iniEncontrado){
+                         anchoIniAux=j;
+                         iniEncontrado=true;
+                       
+                     }else{
+                       anchoFinAux=j;
+                     }
                 }
             }
-            if(cantF>anchoF)
-                anchoF= cantF;
-            cantF=0;
+            iniEncontrado=false;
+            if(anchoIniAux<anchoIni){
+              anchoIni = anchoIniAux;
+            }
+            if(anchoFinAux>anchoFin){
+              anchoFin = anchoFinAux;
+            }     
+            
+            //inidividual.setAnchIni(anchoIni); desabilitar para almacenar el ini  
+            //inidividual.setAnchFin(anchoFin);desabilitar para almacenar el fin  
         }
-        System.out.println("fit ancho: " +anchoF);
-        return anchoF;
+        int ancho =  anchoFin-anchoIni+1;
+        System.out.println("fit altossss: " +ancho);
+        return ancho;
     }
 }
