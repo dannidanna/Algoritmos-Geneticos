@@ -83,6 +83,8 @@ public class Individual {
     public int getFitness() {
         if (fitness == 0) {
             fitness = fitnessCal.getFitness(this);
+            
+            
         }
         return fitness;
     }

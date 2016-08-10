@@ -29,6 +29,8 @@ public class FitnessCalc {
     }
 
     private  int alto(Individual individual) {
+        
+        System.out.println("ENTRPPPPPPPPPPPPP");
           Objeto [][] pieces = individual.getPieces();
         int altoIni=1000;
         int altoFin=0;
