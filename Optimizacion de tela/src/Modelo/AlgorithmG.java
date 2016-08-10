@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class AlgorithmG {
  private static final double  mutation_chance=0.2;
  private static final int pressure=2;
- private static final int cant_individuos=6;
+ private static final int cant_individuos=3;///debo cambiar el valor a 6
  private Population population;
 
     public AlgorithmG() {
@@ -31,6 +31,7 @@ public class AlgorithmG {
  
  
      public  Population inicialPopulation(ArrayList<Objeto> obs) {
+         
          Population populat=null;
          Material material=getMaterial(obs);
          populat= population.generatePopulation(material, obs,cant_individuos);

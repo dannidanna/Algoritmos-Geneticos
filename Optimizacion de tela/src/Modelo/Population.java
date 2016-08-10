@@ -15,14 +15,25 @@ public class Population {
 
   private ArrayList<Individual> individuos;
   private boolean selected;
+  private String name;
   public Population(){
   individuos = new ArrayList<>();
+  name = "";  
   
   }
 
     Population(ArrayList<Individual> newInd) {
       individuos = newInd;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 /**
  * este metodo genera una poblacion inicial
  * @param material
@@ -31,13 +42,15 @@ public class Population {
  * @return 
  */
     public Population generatePopulation(Material material, ArrayList<Objeto> obs, int cant_individuos) {
+         
         for (int i = 0; i < cant_individuos; i++) {
             Individual individual = new Individual(material.getAlto(),material.getAncho());
             
             individual.setObj_pieces(obs);
             individual.generateIndividual();
+            individual.setName("individual"+i);
             individuos.add(individual);
-           // System.out.println("population....metodo_generatePopulation");
+         
         }
         return this;
     }

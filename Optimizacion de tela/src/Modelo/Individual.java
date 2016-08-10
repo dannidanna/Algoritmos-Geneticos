@@ -17,6 +17,7 @@ public class Individual {
     private ArrayList<Objeto> obj_pieces;
     private int fitness;
     private boolean selected;
+    private String name;
         // Create a random individual
   /**
    *  este es para definir el tamanio de la tela
@@ -29,7 +30,17 @@ public class Individual {
     pieces = new Objeto[m][n];
     fitness=0;
     selected = false;
+    name="";
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     /**
      * este metodo genera un plano donde
      * se visualiza las piezas acomodadas
@@ -85,7 +96,9 @@ public class Individual {
     }
 
     private void acomodar(Piece piece) {
-            int num_alt= (int)(Math.random()*2);// es para comensar con alto o con el ancho
+        
+            do {            
+                       int num_alt= (int)(Math.random()*2);// es para comensar con alto o con el ancho
             Medida m_alto = piece.getAlto();
             Medida m_ancho = piece.getAncho();
             int alto=0; 
@@ -97,20 +110,41 @@ public class Individual {
              alto= m_ancho.getSize();
              ancho= m_alto.getSize();
             }
-            int posX=posX();
-            int posY=posY();
+           // int posX=posX();
+           // int posY=posY();
             
-           // while(!acomodo(piece,alto,ancho,posX,posY)){
+           
            m_alto.setSize(alto);
            m_ancho.setSize(ancho);
            piece.setAlto(m_alto);
            piece.setAncho(m_ancho);
-           //System.out.println("entro a acomodar la pieza");
-           while(!acomodo(piece,posX,posY)){
-              posX=posX();
-              posY=posY();
-               System.err.println("entro....While acomodo: " +piece.getName());
-            }    
+        } while (!acomodo(piece,posX(),posY()));
+//            int num_alt= (int)(Math.random()*2);// es para comensar con alto o con el ancho
+//            Medida m_alto = piece.getAlto();
+//            Medida m_ancho = piece.getAncho();
+//            int alto=0; 
+//            int ancho=0;
+//            if(num_alt==0){
+//             alto= m_alto.getSize();
+//             ancho= m_ancho.getSize();
+//            }else{
+//             alto= m_ancho.getSize();
+//             ancho= m_alto.getSize();
+//            }
+//            int posX=posX();
+//            int posY=posY();
+//            
+//           // while(!acomodo(piece,alto,ancho,posX,posY)){
+//           m_alto.setSize(alto);
+//           m_ancho.setSize(ancho);
+//           piece.setAlto(m_alto);
+//           piece.setAncho(m_ancho);
+//           //System.out.println("entro a acomodar la pieza");
+//           while(!acomodo(piece,posX,posY)){
+//              posX=posX();
+//              posY=posY();
+//               System.err.println("entro....While acomodo: " +piece.getName());
+//            }    
             
     }
 
@@ -128,19 +162,20 @@ public class Individual {
        ancho= ancho+posY;
      // int visitadosX=0;
      // int visitadosY=0;
-        while (res&&posX<m&&posX<alto) {            
+        while (res&&posX<m&&posX<alto) {
+          posY=j;            
             while (res&&posY<n&&posY<ancho) {                
                 
                 if(pieces[posX][posY]!=null){
                     res =false;
-                    System.out.println("no esta vacio matriz para: " +piece.getName());
+                    //System.out.println("no esta vacio matriz para: " +piece.getName());
                 }
-                    //System.out.println("esta vacion la matriz###########");
+                    
                 posY++;
             }
             posX++;
         }
-        //int totalV= posX*posY;
+        
         int auxAlto= posX-i;
         int auxAncho = posY-j;
         
@@ -165,7 +200,7 @@ public class Individual {
         for (int posI=i;posI < alto; posI++) {
             for (int posJ=j; posJ < ancho; posJ++) {
                 pieces[posI][posJ]= piece;
-                System.out.println("insertadndo: " + piece.getName());
+                //System.out.println("insertadndo: " + piece.getName());
             }
         }
     }

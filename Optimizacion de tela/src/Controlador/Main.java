@@ -37,6 +37,7 @@ public class Main {
         obj.add(p4);
         obj.add(p5);
         Individual ind1 = control.inicio(obj);
+        System.out.println("la matriz es de: " + ind1.getName());
         Objeto [][] piezas= ind1.getPieces();
         
         print(piezas);
@@ -48,12 +49,13 @@ public class Main {
     }  
 
     private static void print(Objeto[][] piezas) {
+        
         for (int i = 0; i < piezas.length; i++) {
             for (int j = 0; j <piezas[0].length; j++) {
                 if(piezas[i][j]!=null)
                     System.out.print(piezas[i][j].getName());
                 else
-                    System.out.print("p*");
+                    System.out.print("v*");
             }
             System.out.println();
         }
