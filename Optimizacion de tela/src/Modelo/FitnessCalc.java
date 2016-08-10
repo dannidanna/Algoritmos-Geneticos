@@ -32,8 +32,8 @@ public class FitnessCalc {
         Objeto [][] pieces = individual.getPieces();
         int altoF=0;
         int cantF=0;
-        for (int i = 0; i < pieces.length ; i++) {
-            for (int j = 0; j < pieces[0].length; j++) {
+        for (int j = 0; j < pieces.length ; j++) {
+            for (int i = 0; i < pieces[0].length; i++) {
                 if (pieces[i][j]!=null) {
                     cantF++;
                 }
