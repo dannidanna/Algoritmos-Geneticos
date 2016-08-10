@@ -18,7 +18,8 @@ public class Individual {
     private int fitness;
     private boolean selected;
     private String name;
-        // Create a random individual
+    private FitnessCalc fitnessCal;
+        
   /**
    *  este es para definir el tamanio de la tela
    * @param alto
@@ -31,6 +32,7 @@ public class Individual {
     fitness=0;
     selected = false;
     name="";
+    fitnessCal = new FitnessCalc();
     }
 
     public String getName() {
@@ -76,7 +78,7 @@ public class Individual {
     
     public int getFitness() {
         if (fitness == 0) {
-            fitness = FitnessCalc.getFitness(this);
+            fitness = fitnessCal.getFitness(this);
         }
         return fitness;
     }

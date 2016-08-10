@@ -49,6 +49,7 @@ public class Population {
             individual.setObj_pieces(obs);
             individual.generateIndividual();
             individual.setName("individual"+i);
+            System.out.println("Fitness individual "+i+": "+individual.getFitness());
             individuos.add(individual);
          
         }

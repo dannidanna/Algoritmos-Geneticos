@@ -23,6 +23,8 @@ public class Main {
         Controlador control  = Controlador.getControlador();
         AlgorithmG ag1 = new AlgorithmG();
         control.setAlgorithmG(ag1);
+        // esta es la froma que debes crear objetos 
+        // Piece(medida(alto,unidad),medida(ancho,unidad),nombre de la pieza)
         Piece p1             = new Piece(new Medida(3,"cm"),new Medida(4,"cm"),"p1");
         Piece p2             = new Piece(new Medida(3,"cm"),new Medida(3,"cm"),"p2");
         Piece p3             = new Piece(new Medida(2,"cm"),new Medida(1,"cm"),"p3");
@@ -36,8 +38,10 @@ public class Main {
         obj.add(p3);
         obj.add(p4);
         obj.add(p5);
-        Individual ind1 = control.inicio(obj);
+        Individual ind1 = control.inicio(obj);//este es la forma que dedes llamar , para mostrar las piesas en el interfaz
+        System.out.println("=====================================================");
         System.out.println("la matriz es de: " + ind1.getName());
+        System.out.println("Fitness: " + ind1.getFitness());
         Objeto [][] piezas= ind1.getPieces();
         
         print(piezas);

@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.Controlador;
 import java.awt.Toolkit;
 
 /**
@@ -16,7 +17,9 @@ public class Interface extends javax.swing.JFrame {
     /**
      * Creates new form Interface
      */
+   Controlador control;// con este controlador debes trabajar 
     public Interface() {
+        control = Controlador.getControlador();
         this.setUndecorated(false);
         this.setAlwaysOnTop(true);
         this.setResizable(true);
