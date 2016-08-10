@@ -448,6 +448,12 @@ public class Interface extends javax.swing.JFrame {
             matDesper.setText("");
     }//GEN-LAST:event_btnOptFinalActionPerformed
 
+    public void dibujarPiezas(){
+    
+    
+    
+        
+    }
     /**
      * @param args the command line arguments
      */
