@@ -22,7 +22,7 @@ import javax.swing.JFrame;
  */
 public class Main {
     public static void main(String[] arg)
-    {
+    {   Interface admin=new Interface();
         Controlador control  = Controlador.getControlador();
         AlgorithmG ag1 = new AlgorithmG();
         Generacion generacion = new Generacion();
@@ -37,6 +37,7 @@ public class Main {
         Piece p5             = new Piece(new Medida(2,"cm"),new Medida(2,"cm"),"p5");
         Material m1          = new Material(new Medida(10,"cm"),new Medida(10,"cm"),"material1");
         ArrayList<Objeto> obj= new ArrayList<>();
+        
         obj.add(m1);
         obj.add(p1);
         obj.add(p2);
