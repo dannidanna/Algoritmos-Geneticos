@@ -48,7 +48,7 @@ public class panelTela extends JPanel {
   for (int y=0; y < ma[x].length; y++) {
     matrizT[y][x] = ma[x][y];
   }
-}*/
+}
     int[][] matrizT = new int[obs[0].length][obs.length];
   
     for (int x=0; x < obs.length; x++) {
@@ -59,22 +59,25 @@ public class panelTela extends JPanel {
     matrizT[y][x] = Integer.parseInt((obs[x][y].getName()).substring(1));
   
     matriz = matrizT;
-    }}}
+
+    }} */
+
+}
     
 
   public void paint(Graphics g) {
-      pintarMatriz(g);
+     // pintarMatriz(g);
   }
   
   public void pintarMatriz(Graphics g){
   int fil = matriz.length;
   int col = matriz[0].length;
-  
+   //    System.out.println(matriz);
   for (int i = 0; i < fil; i++) {  //número de filas
      for (int j = 0; j < col; j++) { //número de columnas de cada fila
          pintarPieza(i*10, j*10, matriz[i][j], g);
      }    
-}System.out.println(fil +" "+ col);
+}//System.out.println(fil +" "+ col);
     
   }
   
@@ -95,4 +98,19 @@ public class panelTela extends JPanel {
 
   
   }
+    
+    public void pintarTodo(Objeto[][] obs){
+        int[][] matrizT = new int[obs[0].length][obs.length];
+  
+    for (int x=0; x < obs.length; x++) {
+  for (int y=0; y < obs[x].length; y++) {
+                     if(obs[x][y]==null)
+                    matrizT[y][x]=0;
+                else
+    matrizT[y][x] = Integer.parseInt((obs[x][y].getName()).substring(1));
+  
+    matriz = matrizT;
+ 
+    }}
+    }
 }

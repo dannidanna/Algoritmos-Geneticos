@@ -22,12 +22,13 @@ import javax.swing.JFrame;
  */
 public class Main {
     public static void main(String[] arg)
-    {   Interface admin=new Interface();
+    {   
         Controlador control  = Controlador.getControlador();
         AlgorithmG ag1 = new AlgorithmG();
         Generacion generacion = new Generacion();
         control.setGeneracion(generacion);
         control.setAlgorithmG(ag1);
+        Interface admin=new Interface();
         // esta es la froma que debes crear objetos 
         // Piece(medida(alto,unidad),medida(ancho,unidad),nombre de la pieza)
         Piece p1             = new Piece(new Medida(3,"cm"),new Medida(4,"cm"),"p1");
@@ -111,7 +112,7 @@ public class Main {
     // create a basic JFrame
     JFrame.setDefaultLookAndFeelDecorated(true);
     JFrame frame = new JFrame("JFrame Color Example");
-    frame.setSize(100,100);
+    frame.setSize(400,400);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
     // add panel to main frame
