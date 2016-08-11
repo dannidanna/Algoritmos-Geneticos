@@ -44,8 +44,8 @@ public class Main {
         obj.add(p5);
         Individual ind1 = control.inicio(obj);//este es la forma que dedes llamar , para mostrar las piesas en el interfaz
         int cant_indi=ag1.getPopulation().cantIndividual();
-        System.out.println("Mejor Poblacion: " + control.getMejorPopulation().getIndividualMejor().getName());
-        System.out.println("Cantidad de individuos: " + cant_indi);
+        //System.out.println("Mejor Poblacion: " + control.getMejorPopulation().getIndividualMejor().getName());
+        //System.out.println("Cantidad de individuos: " + cant_indi);
         System.out.println("=====================================================");
         System.out.println("la matriz es de: " + ind1.getName());
         System.out.println("Fitness: " + ind1.getFitness());

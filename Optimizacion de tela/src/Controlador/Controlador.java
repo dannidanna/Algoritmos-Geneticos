@@ -59,6 +59,15 @@ public class Controlador
         generacion.addPopulation(pop);
      return pop.getIndividualMejor();//retorna el mejor individuo
     }
+    /**
+     * 
+     * @return 
+     */
+    public  Individual getInicio(){
+    ArrayList<Population> gens =  new ArrayList<>();
+    Population popIni = gens.get(0);
+    return popIni.getIndividualMejor();
+    }
     
     public Population getMejorPopulation(){
       return generacion.getMejorPopulation();

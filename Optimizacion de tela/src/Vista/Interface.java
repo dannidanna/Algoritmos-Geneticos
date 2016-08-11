@@ -429,11 +429,16 @@ public class Interface extends javax.swing.JFrame {
         String anchoPi = anchoP.getText();
         int altoPieza = Integer.parseInt(altoPi);
         int anchoPieza = Integer.parseInt(anchoPi);
+<<<<<<< HEAD
             String tex = "Pieza anadida: alto = "+altoPieza + " ancho = " +anchoPieza;
             piezas.setText(tex);
             altoP.setText("");
             anchoP.setText("");
             anadir(altoPieza, anchoPieza);
+=======
+        altoP.setText("");
+        anchoP.setText("");
+>>>>>>> c564df7ddef7b49900611d897b0c50c514b51317
         
     }//GEN-LAST:event_btnTamPiezaActionPerformed
 
