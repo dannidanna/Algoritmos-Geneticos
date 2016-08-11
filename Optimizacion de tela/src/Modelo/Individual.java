@@ -165,7 +165,7 @@ public class Individual {
             if(areaAux<areaMejor){
              areaMejor =  areaAux;
              posPiece = i;
-                System.out.println("entro al get Piece SMALL");
+                
             }
         }
         return obj_pieces.get(posPiece);
@@ -354,10 +354,11 @@ public class Individual {
 //    
     
      public void mutar(){
-         
-         System.out.println("tamanio: " + obj_pieces.size());
-         Piece piece = (Piece)getPieceSmall();
-        
+             ArrayList<Objeto> list= piezasMutar();
+          while(!list.isEmpty()){
+          
+                      Piece piece = (Piece)list.remove(list.size()-1);
+             quitarPieza(piece);
             do {            
             int num_alt= (int)(Math.random()*2);// es para comensar con alto o con el ancho
             Medida m_alto = piece.getAlto();
@@ -380,14 +381,20 @@ public class Individual {
            //int posX =  (int)Math.round(Math.random()*n);
            //int posY =  (int)Math.round(Math.random()*n);
         } while (!acomodoMutacion(piece,getRandomRangoX(),getRandomRangoY()));
+      }
  
             
     }
      public int getRandomRangoX(){
-     return  ThreadLocalRandom.current().nextInt(altoIni,altoFin + 1);
+         int num = ThreadLocalRandom.current().nextInt(altoIni,altoFin + 1);
+         System.out.println("numeroRAMDOM_X: " +num);
+     return  num;
      }
     public int getRandomRangoY(){
-     return ThreadLocalRandom.current().nextInt(anchoIni,anchoFin + 1);
+        
+        int num = ThreadLocalRandom.current().nextInt(anchoIni,anchoFin + 1);
+        System.out.println("numeroRAMDOM+Y: " +num);
+     return num;
      }
     private boolean acomodoMutacion(Piece piece, int posX, int posY) {
   
@@ -444,6 +451,52 @@ public class Individual {
                 //System.out.println("insertadndo: " + piece.getName());
             }
         }
+    }
+
+    private void quitarPieza(Piece piece) {
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if(pieces[i][j]!=null){
+                 if(pieces[i][j] instanceof Piece)
+                        if(pieces[i][j].getName().equals(piece.getName())) {
+                           pieces[i][j]=null; 
+                        }
+                }
+            }
+        }
+    }
+
+    private ArrayList<Objeto> piezasMutar() {
+      ArrayList<Objeto> auxList = obj_pieces;
+      ArrayList<Objeto> listOrd = new ArrayList<>();
+      int areaAux = 10000;
+      int areaSmall = 1000;
+      int posSmall = 0;
+        for (int i = 0; i < auxList.size(); i++) {
+            areaAux = auxList.get(i).getArea();
+            
+        }
+        //int posI=0;
+        while (!auxList.isEmpty()) {            
+            for (int i = 0; i < auxList.size(); i++) {
+              areaAux = auxList.get(i).getArea();
+              if(areaAux<areaSmall){
+                areaSmall = areaAux;
+                posSmall = i;
+              }
+            
+           }
+            listOrd.add(auxList.remove(posSmall));
+             areaSmall = 10000;
+            
+        }
+        
+        int hasta =(int) listOrd.size()/2;
+        for (int i = 0; i < hasta; i++) {
+            listOrd.remove(listOrd.size()-1);
+        }
+       return listOrd;
+      
     }
         
     

@@ -26,8 +26,11 @@ public class Main {
         Controlador control  = Controlador.getControlador();
         AlgorithmG ag1 = new AlgorithmG();
         Generacion generacion = new Generacion();
+        panelTela panelT =  new panelTela();
         control.setGeneracion(generacion);
         control.setAlgorithmG(ag1);
+        control.setPanelTela(panelT);
+        //new Interface();
         // esta es la froma que debes crear objetos 
         // Piece(medida(alto,unidad),medida(ancho,unidad),nombre de la pieza)
         Piece p1             = new Piece(new Medida(3,"cm"),new Medida(4,"cm"),"p1");
@@ -66,7 +69,7 @@ public class Main {
         Objeto [][] piezas= ind1.getPieces();
         
         printIni(piezas);
-        dibujar(piezas);
+       // dibujar(piezas);
         for (int i = 0; i < 10000; i++) {
             
         }
@@ -96,7 +99,21 @@ public class Main {
         
         
         printOptimizar1(newPiezas2);
+         ////////////////////////////////////////////////////////////////////////////////////////////
+          for (int i = 0; i < 100000; i++) {
+            
+        }
+                ////////////////////////////////////////////////////////////////////////////////////////////
         
+        Individual newInd3 = control.optimizar();
+        
+        System.out.println("=====================================================");
+        System.out.println("la matriz es de: " + newInd3.getName());
+        System.out.println("Fitness: " + newInd3.getFitness());
+        Objeto [][] newPiezas3= newInd3.getPieces();
+        
+        
+        printOptimizar1(newPiezas3);
         
         //new Interface(); 
     }  

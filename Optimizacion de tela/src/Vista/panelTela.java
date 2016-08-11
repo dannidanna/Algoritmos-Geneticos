@@ -60,7 +60,24 @@ public class panelTela extends JPanel {
   
     matriz = matrizT;
     }}}
-    
+//    public panelTela(){
+//      colors = new Color[]{Color.black,Color.red, Color.BLUE, Color.CYAN, Color.MAGENTA, Color.green, Color.ORANGE, Color.YELLOW,Color.DARK_GRAY,Color.red, Color.BLUE, Color.CYAN};      
+//    
+//    }
+//    public void setMatriz(Objeto[][] obs){
+//        int[][] matrizT = new int[obs[0].length][obs.length];
+//  
+//    for (int x=0; x < obs.length; x++) {
+//  for (int y=0; y < obs[x].length; y++) {
+//                     if(obs[x][y]==null)
+//                    matrizT[y][x]=0;
+//                else
+//    matrizT[y][x] = Integer.parseInt((obs[x][y].getName()).substring(1));
+//  
+//    matriz = matrizT;
+//    }}
+//        //paint(g);
+//    }
 
   public void paint(Graphics g) {
       pintarMatriz(g);

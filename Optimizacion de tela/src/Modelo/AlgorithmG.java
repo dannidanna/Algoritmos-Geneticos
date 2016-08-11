@@ -77,30 +77,28 @@ public class AlgorithmG {
          //for (int i = 0; i < cant_individuos; i++) {
            String name="";
             Individual indiv1      = tournamentSelection(pop,"");
-            System.out.println("TAMANIO torunate: "+indiv1.cantPieces());
-            
-////            System.out.println("matriz de indiv1");
-////             Objeto[][] obj = indiv1.getPieces();
-////             print(obj);
+          
+//            System.out.println("matriz de indiv1");
+//             Objeto[][] obj = indiv1.getPieces();
+//             print(obj);
 
             Individual indiv2      = tournamentSelection(pop,indiv1.getName());
-              System.out.println("TAMANIO torunate22: "+indiv2.cantPieces());
+  
             
 //            System.out.println("matriz de indiv2");
 //            Objeto[][] obj2 = indiv2.getPieces();
 //            print(obj2);
-         
+//         
             
             Population newPopul    = reprodictionIndividual(indiv1,indiv2);
-               Individual idPol = newPopul.getIndividualMejor();
-            System.out.println("TAMANIO REPRO: "+idPol.cantPieces());
+            Individual idPol = newPopul.getIndividualMejor();
+
             Population newEvol     = crossover(newPopul);
             Individual id = newEvol.getIndividualMejor();
-            System.out.println("TAMANIO CROSSOVER: "+id.cantPieces());
             Population newMutation = mutate(newEvol);
        
-        return newMutation;
-        //return newEvol;
+       return newMutation;
+      // return newEvol;
     }
 
         // Mutate an individual
