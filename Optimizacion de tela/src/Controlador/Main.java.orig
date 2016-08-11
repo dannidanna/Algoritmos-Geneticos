@@ -66,8 +66,13 @@ public class Main {
         Objeto [][] piezas= ind1.getPieces();
         
         printIni(piezas);
+<<<<<<< HEAD
+        
+        for (int i = 0; i < 100000; i++) {
+=======
         dibujar(piezas);
         for (int i = 0; i < 10000; i++) {
+>>>>>>> 80bcd7d78a199625c5c74207835257cb9a647fd5
             
         }
         ////////////////////////////////////////////////////////////////////////////////////////////
