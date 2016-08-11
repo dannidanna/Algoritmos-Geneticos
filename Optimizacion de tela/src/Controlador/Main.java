@@ -26,11 +26,11 @@ public class Main {
         Controlador control  = Controlador.getControlador();
         AlgorithmG ag1 = new AlgorithmG();
         Generacion generacion = new Generacion();
-        panelTela panelT =  new panelTela();
+    //    panelTela panelT =  new panelTela();
         control.setGeneracion(generacion);
         control.setAlgorithmG(ag1);
         Interface admin=new Interface();
-        control.setPanelTela(panelT);
+  //      control.setPanelTela(panelT);
         //new Interface();
         // esta es la froma que debes crear objetos 
         // Piece(medida(alto,unidad),medida(ancho,unidad),nombre de la pieza)

@@ -97,9 +97,15 @@ public class Controlador
      */
     public Individual optimizar(){
         Population newPop = algorithmG.evolvePopulation(getMejorPopulation());
-        generacion.addPopulation(newPop);
+        if(newPop.getIndividualMejor().getFitness()==1){
+        return generacion.getMejorPopulation().getIndividualMejor();
+        }
+        else{
+               generacion.addPopulation(newPop);
         return newPop.getIndividualMejor();
-    }
+  
+        }
+   }
     public Individual optimizadoFinal(){
     return null;
     }

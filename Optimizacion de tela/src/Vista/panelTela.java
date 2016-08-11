@@ -48,7 +48,7 @@ public class panelTela extends JPanel {
   for (int y=0; y < ma[x].length; y++) {
     matrizT[y][x] = ma[x][y];
   }
-}
+}*/
     int[][] matrizT = new int[obs[0].length][obs.length];
   
     for (int x=0; x < obs.length; x++) {
@@ -60,11 +60,11 @@ public class panelTela extends JPanel {
   
     matriz = matrizT;
 
-    }} */
+    }} 
 
 }
     
-    }}}
+   // }}}
 //    public panelTela(){
 //      colors = new Color[]{Color.black,Color.red, Color.BLUE, Color.CYAN, Color.MAGENTA, Color.green, Color.ORANGE, Color.YELLOW,Color.DARK_GRAY,Color.red, Color.BLUE, Color.CYAN};      
 //    
@@ -85,7 +85,7 @@ public class panelTela extends JPanel {
 //    }
 
   public void paint(Graphics g) {
-     // pintarMatriz(g);
+      pintarMatriz(g);
   }
   
   public void pintarMatriz(Graphics g){
@@ -94,10 +94,12 @@ public class panelTela extends JPanel {
    //    System.out.println(matriz);
   for (int i = 0; i < fil; i++) {  //número de filas
      for (int j = 0; j < col; j++) { //número de columnas de cada fila
-         pintarPieza(i*10, j*10, matriz[i][j], g);
+         pintarPieza(i*50, j*50, matriz[i][j], g);
      }    
 }//System.out.println(fil +" "+ col);
-    
+        g.setColor(Color.white);
+    g.fillRect( fil*50, 0, ( 2*fil*50), (col*50));
+     g.fillRect( 0, (col*50), ( 2*fil*50), (col*50));
   }
   
   public void pintarPiezaEntera(int x1, int y1, int x2, int y2, int col, Graphics g){
@@ -112,13 +114,13 @@ public class panelTela extends JPanel {
     Color c = colors[col];
       
       g.setColor(colors[col]);
-    g.fillRect(x, y, (x+10), (y+10));
+    g.fillRect(x, y, (x+50), (y+50));
     
 
   
   }
     
-    public void pintarTodo(Objeto[][] obs){
+    public void repintarTodo(Objeto[][] obs){
         int[][] matrizT = new int[obs[0].length][obs.length];
   
     for (int x=0; x < obs.length; x++) {

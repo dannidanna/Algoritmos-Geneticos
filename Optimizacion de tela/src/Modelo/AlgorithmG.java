@@ -74,22 +74,12 @@ public class AlgorithmG {
       * @return 
       */
     public Population evolvePopulation(Population pop) {
-         //for (int i = 0; i < cant_individuos; i++) {
+    
            String name="";
             Individual indiv1      = tournamentSelection(pop,"");
-          
-//            System.out.println("matriz de indiv1");
-//             Objeto[][] obj = indiv1.getPieces();
-//             print(obj);
 
             Individual indiv2      = tournamentSelection(pop,indiv1.getName());
-  
-            
-//            System.out.println("matriz de indiv2");
-//            Objeto[][] obj2 = indiv2.getPieces();
-//            print(obj2);
-//         
-            
+         
             Population newPopul    = reprodictionIndividual(indiv1,indiv2);
             Individual idPol = newPopul.getIndividualMejor();
 
@@ -98,7 +88,7 @@ public class AlgorithmG {
             Population newMutation = mutate(newEvol);
        
        return newMutation;
-      // return newEvol;
+
     }
 
         // Mutate an individual

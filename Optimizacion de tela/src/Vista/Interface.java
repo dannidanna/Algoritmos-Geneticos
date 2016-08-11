@@ -17,6 +17,7 @@ import Modelo.Piece;
 
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 /**
  *
@@ -689,7 +690,7 @@ public class Interface extends javax.swing.JFrame {
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(159, 159, 159)
+                                .addGap(97, 97, 97)
                                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(56, 56, 56)
@@ -818,6 +819,22 @@ public class Interface extends javax.swing.JFrame {
             obj.add(p8);
             obj.add(p9);
             Individual ind1 = control.inicio(obj);
+            panelTela panel = new panelTela(ind1.getPieces());
+            fitness.setText("" + ind1.getFitness());
+
+            this.add(panel);
+            //this.
+              JFrame.setDefaultLookAndFeelDecorated(true);
+    JFrame frame = new JFrame("JFrame Color Example");
+    frame.setSize(900,900);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 
+    // add panel to main frame
+    frame.add(panel);
+ 
+    frame.setVisible(true);
+            
+            
 //         control.pintar(ind1);
 //            
 //            Objeto [][] piezas = ind1.getPieces();
@@ -838,7 +855,22 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_btnTamPiezaActionPerformed
 
     private void btnOptimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOptimizarActionPerformed
-        fitness.setText("");
+Individual ind = control.optimizar();
+panelTela panel = new panelTela(ind.getPieces());
+            fitness.setText("" + ind.getFitness());
+
+
+            this.add(panel);
+
+              JFrame.setDefaultLookAndFeelDecorated(true);
+    JFrame frame = new JFrame("JFrame Color Example");
+    frame.setSize(900,900);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 
+    // add panel to main frame
+    frame.add(panel);
+ 
+    frame.setVisible(true);
     }//GEN-LAST:event_btnOptimizarActionPerformed
 
     private void matDesperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matDesperActionPerformed
@@ -865,12 +897,7 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOptFinalActionPerformed
 
 
-    public void dibujarPiezas(){
-    
-    
-    
-        
-    }
+
 
     private void matUsadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matUsadoActionPerformed
         // TODO add your handling code here:
