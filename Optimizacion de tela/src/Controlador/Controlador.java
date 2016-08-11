@@ -84,5 +84,6 @@ public class Controlador
     public Individual optimizadoFinal(){
     return null;
     }
-
+    
+    
 }

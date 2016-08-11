@@ -76,17 +76,31 @@ public class AlgorithmG {
     public Population evolvePopulation(Population pop) {
          //for (int i = 0; i < cant_individuos; i++) {
            String name="";
-            Individual indiv1      = tournamentSelection(pop);
+            Individual indiv1      = tournamentSelection(pop,"");
+            System.out.println("TAMANIO torunate: "+indiv1.cantPieces());
             
-            Individual indiv2      = tournamentSelection(pop);
-              
+////            System.out.println("matriz de indiv1");
+////             Objeto[][] obj = indiv1.getPieces();
+////             print(obj);
+
+            Individual indiv2      = tournamentSelection(pop,indiv1.getName());
+              System.out.println("TAMANIO torunate22: "+indiv2.cantPieces());
+            
+//            System.out.println("matriz de indiv2");
+//            Objeto[][] obj2 = indiv2.getPieces();
+//            print(obj2);
+         
             
             Population newPopul    = reprodictionIndividual(indiv1,indiv2);
+               Individual idPol = newPopul.getIndividualMejor();
+            System.out.println("TAMANIO REPRO: "+idPol.cantPieces());
             Population newEvol     = crossover(newPopul);
+            Individual id = newEvol.getIndividualMejor();
+            System.out.println("TAMANIO CROSSOVER: "+id.cantPieces());
             Population newMutation = mutate(newEvol);
        
-        //return newMutation;
-        return newEvol;
+        return newMutation;
+        //return newEvol;
     }
 
         // Mutate an individual
@@ -94,24 +108,24 @@ public class AlgorithmG {
      * este metodo no esta siendo usado
      * @param indiv 
      */
-    private  void mutate(Individual indiv) {
-        // Loop through genes
-        ///
-        //el limite 10 debe ser sustituido por el tamanio de individus
-        for (int i = 0; i < 10; i++) {
-            if (Math.random() <= mutation_chance) {
-                // Create random gene
-               
-            }
-        }
-    }
+//    private  void mutate(Individual indiv) {
+//        // Loop through genes
+//        ///
+//        //el limite 10 debe ser sustituido por el tamanio de individus
+//        for (int i = 0; i < 10; i++) {
+//            if (Math.random() <= mutation_chance) {
+//                // Create random gene
+//               
+//            }
+//        }
+//    }
 
     /**
      * selecciona individuos para el cruce
      * @param pop
      * @return 
      */
-    private  Individual tournamentSelection(Population pop) {
+    private  Individual tournamentSelection(Population pop,String name) {
         
         int size=pop.cantIndividual();  
          int fitness_mejor=10000;// iniciando en 100 porque el fitnes es cada
@@ -121,12 +135,13 @@ public class AlgorithmG {
         for (int i = 0; i < size; i++) {
             Individual aux_ind = individuos.get(i);
             int fitness_aux=aux_ind.getFitness();
-            if(fitness_aux<fitness_mejor&&!aux_ind.isSelected()){
+            if(fitness_aux<fitness_mejor&&(!aux_ind.getName().equals(name))){
              fitness_mejor= fitness_aux;
              pos_mejor=i;
             }
            }
         Individual res =individuos.get(pos_mejor);
+        
         
         return res;
      
@@ -155,8 +170,7 @@ public class AlgorithmG {
  */
     private Population crossover(Population newPopul) {
         Population newPopC=new Population();
-        ArrayList<Individual> ind =  newPopul.getIndividuos();
-        
+        ArrayList<Individual> ind =  newPopul.getIndividuos();      
         newPopC.addIndividual(ind.get(0));
         int j=3;
         int i=1;
@@ -175,19 +189,78 @@ public class AlgorithmG {
     }
 
     private Population mutate(Population newEvol) {
-     return null;
+        System.out.println("MUTANDO");
+        //Individual indMejor =  newEvol.getIndividualMejor();
+        //Piece pieza = (Piece)indMejor.getPieceSmall();
+        newEvol.getIndividualMejor().mutar();
+        return newEvol;
     }
    public int random(){
     return (int)(Math.random()*2);
    }
-    private Individual cross(Individual ind1, Individual ind2) {
-        ArrayList<Objeto> piezas = ind1.getObj_pieces();
-        for (int i = 0; i < piezas.size(); i++) {
-            ind1.reIniciar();
-            ind1.generateIndividual();
-           // System.out.println("creze exitoso");
-        }
-        return ind1;
+//    private Individual cross(Individual ind1, Individual ind2) {
+//        ArrayList<Objeto> piezas = ind1.getObj_pieces();
+//        for (int i = 0; i < piezas.size(); i++) {
+//            ind1.reIniciar();
+//            ind1.generateIndividual();
+//           // System.out.println("creze exitoso");
+//        }
+//        return ind1;
+//    }
+   private Individual cross(Individual ind1, Individual ind2) {
+   
+        ArrayList<Objeto> piezas1 = ind1.getObj_pieces();
+        ArrayList<Objeto> piezas2 = ind2.getObj_pieces();
+        int cantP = piezas1.size();
+        Individual newInd = new Individual(ind1.getM(),ind1.getN());
+        //int numRand= random();
+       // boolean insertado=false;
+        
+        for (int i = 0; i < cantP; i++) {
+            
+              int numRand= random();
+              boolean insertado=false;
+               if(numRand==0){
+                 //insertado= insertar(newInd,piezas1.get(i));
+                insertado = newInd.insertar(ind1,piezas1.get(i));
+              }else 
+              {
+             
+                  insertado = newInd.insertar(ind2,piezas2.get(i));
+              
+              }
+               
+               
+               if(insertado!=true){
+                   if(numRand==0)
+                    insertado = newInd.insertar(ind2,piezas2.get(i));  
+                   else insertado = newInd.insertar(ind1,piezas1.get(i));  
+               }
+                if(insertado!=true){
+                    System.out.println("all");
+                    insertado = newInd.insertarAll(ind2,piezas2.get(i));  
+                   
+               }
+               
+            
+       }
+       
+        return newInd;
+         
     }
+
+    private void print(Objeto[][] obj) {
+                    for (int i = 0; i < obj.length; i++) {
+                for (int j = 0; j < obj[0].length; j++) {
+                    if(obj[i][j]!=null){
+                        System.out.print(obj[i][j].getName());
+                    }
+                    else System.out.print("v*");
+                }
+                System.out.println();
+             }
+    }
+
+ 
     
 }

@@ -45,14 +45,26 @@ public class Main {
         int cant_indi=ag1.getPopulation().cantIndividual();
         //System.out.println("Mejor Poblacion: " + control.getMejorPopulation().getIndividualMejor().getName());
         //System.out.println("Cantidad de individuos: " + cant_indi);
+         
+        for (int i = 0; i < 1000; i++) {
+            
+        }
         System.out.println("=====================================================");
         System.out.println("la matriz es de: " + ind1.getName());
+        
         System.out.println("Fitness: " + ind1.getFitness());
+        
+//        System.out.println("altoIni: " + ind1.getAltoIni());
+//        System.out.println("altoFni: " + ind1.getAltoFin());
+//        
+//        System.out.println("anchoIni: " + ind1.getAnchoIni());
+//        System.out.println("anchoFin: " + ind1.getAnchoFin());
+        
         Objeto [][] piezas= ind1.getPieces();
         
         printIni(piezas);
         
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100000; i++) {
             
         }
         ////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,7 +79,20 @@ public class Main {
         
         printOptimizar1(newPiezas);
         ////////////////////////////////////////////////////////////////////////////////////////////
+          for (int i = 0; i < 100000; i++) {
+            
+        }
+                ////////////////////////////////////////////////////////////////////////////////////////////
         
+        Individual newInd2 = control.optimizar();
+        
+        System.out.println("=====================================================");
+        System.out.println("la matriz es de: " + newInd2.getName());
+        System.out.println("Fitness: " + newInd2.getFitness());
+        Objeto [][] newPiezas2= newInd2.getPieces();
+        
+        
+        printOptimizar1(newPiezas2);
         
         
         //new Interface(); 
