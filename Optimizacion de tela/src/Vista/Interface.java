@@ -818,6 +818,21 @@ public class Interface extends javax.swing.JFrame {
             obj.add(p8);
             obj.add(p9);
             Individual ind1 = control.inicio(obj);
+//         control.pintar(ind1);
+//            
+//            Objeto [][] piezas = ind1.getPieces();
+//                   for (int i = 0; i < piezas.length; i++) {
+//            for (int j = 0; j <piezas[0].length; j++) {
+//                if(piezas[i][j]!=null)
+//                    System.out.print(piezas[i][j].getName());
+//                else
+//                    System.out.print("u*");
+//            }
+//            System.out.println();
+//        }
+//        System.out.println("###########################################");
+            
+        
             
         
     }//GEN-LAST:event_btnTamPiezaActionPerformed

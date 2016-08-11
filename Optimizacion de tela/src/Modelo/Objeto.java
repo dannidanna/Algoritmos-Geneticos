@@ -40,5 +40,7 @@ public class Objeto {
     public void setAncho(Medida ancho) {
         this.ancho = ancho;
     }
-    
+     public int getArea(){
+     return alto.getSize()*ancho.getSize();
+     }   
 }

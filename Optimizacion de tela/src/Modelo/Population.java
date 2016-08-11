@@ -18,7 +18,8 @@ public class Population {
   private String name;
   public Population(){
   individuos = new ArrayList<>();
-  name = "";  
+  name = ""; 
+  selected = false;
   
   }
 
@@ -60,7 +61,9 @@ public class Population {
             individual.setObj_pieces(obs);
             individual.generateIndividual();
             individual.setName("individual"+i);
-            System.out.println("Fitness individual "+i+": "+individual.getFitness());
+            //System.out.println("Fitness individual "+i+": "+individual.getFitness());
+            individual.getFitness();
+                        
             individuos.add(individual);
          
         }
@@ -93,6 +96,11 @@ public class Population {
     public void addIndividual(Individual newInd){
         individuos.add(newInd);
     }
+
+    public boolean isSelected() {
+        return selected;
+    }
+    
 
    
     

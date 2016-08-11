@@ -11,7 +11,9 @@ import Modelo.Individual;
 import Modelo.Material;
 import Modelo.Objeto;
 import Modelo.Population;
+import Vista.panelTela;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 /**
  *
@@ -24,6 +26,7 @@ public class Controlador
     public AlgorithmG algorithmG;
     //private int cant_individuos=6;
     private Generacion generacion;
+    panelTela panelT;
     
     public static Controlador getControlador()
     {
@@ -32,6 +35,24 @@ public class Controlador
             control = new Controlador();
         }
         return control;
+    }
+//    public void pintar(Individual ind){
+//        Objeto [][] obs = ind.getPieces();
+//        panelT.setMatriz(obs);
+//        
+//            JFrame.setDefaultLookAndFeelDecorated(true);
+//    JFrame frame = new JFrame("JFrame Color Example");
+//    frame.setSize(100,100);
+//    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+// 
+//    // add panel to main frame
+//    frame.add(panelT);
+// 
+//    frame.setVisible(true);
+//    
+//    }
+    public void setPanelTela(panelTela panelTela) {
+        this.panelT = panelTela;
     }
 
     public void setPopulation(Population population) {
@@ -44,9 +65,7 @@ public class Controlador
 
     public void setGeneracion(Generacion generacion) {
         this.generacion = generacion;
-    }
-    
-    
+    }   
     /**
      * este metodo retorna una plano de piezas acomodas
      * a un inicio
@@ -84,5 +103,6 @@ public class Controlador
     public Individual optimizadoFinal(){
     return null;
     }
-
+    
+    
 }

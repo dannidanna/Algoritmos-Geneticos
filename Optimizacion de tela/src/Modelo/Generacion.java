@@ -42,7 +42,24 @@ public class Generacion {
             }
             
         }
+        Population mejorPop = generaciones.get(posMejor);
+         mejorPop.setSelected(true);
+        return mejorPop;
+    }
+        public Population getSegMejorPopulation(){
+      //getIndividualMejor()
+        int auxMejor=10000;
+        int mejor=0;
+        int posMejor=0;
+        for (int i = 0; i < getGen(); i++) {
+            Population auxPop=  generaciones.get(i);
+            auxMejor=auxPop.getIndividualMejor().getFitness();
+            if(auxMejor<mejor&&!auxPop.isSelected()){
+                mejor  = auxMejor;
+               posMejor= i;
+            }
+            
+        }
         return generaciones.get(posMejor);
     }
-    
 }

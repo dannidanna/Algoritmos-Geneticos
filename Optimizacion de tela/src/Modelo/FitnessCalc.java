@@ -22,15 +22,17 @@ public class FitnessCalc {
      * @return retorna el fitnes menor
      */
     public  int getFitness(Individual individual) {
-        System.out.println("holafitnes");
-       return alto(individual)*ancho(individual) ;
+        //System.out.println("holafitnes");
+        int fitness= alto(individual)*ancho(individual);
+           individual.setFitness(fitness);
+       return fitness ;
         
     
     }
 
     private  int alto(Individual individual) {
         
-        System.out.println("ENTRPPPPPPPPPPPPP");
+        //System.out.println("ENTRPPPPPPPPPPPPP");
           Objeto [][] pieces = individual.getPieces();
         int altoIni=1000;
         int altoFin=0;
@@ -61,11 +63,11 @@ public class FitnessCalc {
               altoFin = altoFinAux;
             }     
             
-            //inidividual.setAltoIni(AltoIni); desabilitar para almacenar el ini  
-            //inidividual.setAltoFin(AltoFin);desabilitar para almacenar el fin  
+            individual.setAltoIni(altoIni); //desabilitar para almacenar el ini  
+            individual.setAltoFin(altoFin);//desabilitar para almacenar el fin  
         }
         int alto =  altoFin-altoIni+1;
-        System.out.println("fit altossss: " +alto);
+        //System.out.println("fit altossss: " +alto);
         return alto;
     }
 
@@ -100,11 +102,11 @@ public class FitnessCalc {
               anchoFin = anchoFinAux;
             }     
             
-            //inidividual.setAnchIni(anchoIni); desabilitar para almacenar el ini  
-            //inidividual.setAnchFin(anchoFin);desabilitar para almacenar el fin  
+            individual.setAnchIni(anchoIni); //desabilitar para almacenar el ini  
+            individual.setAnchFin(anchoFin);//desabilitar para almacenar el fin  
         }
         int ancho =  anchoFin-anchoIni+1;
-        System.out.println("fit altossss: " +ancho);
+       // System.out.println("fit altossss: " +ancho);
         return ancho;
     }
 }
