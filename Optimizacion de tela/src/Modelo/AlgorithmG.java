@@ -14,23 +14,25 @@ import java.util.ArrayList;
 public class AlgorithmG {
  private static final double  mutation_chance=0.2;
  private static final int pressure=2;
- private static final int cant_individuos=3;///debo cambiar el valor a 6
+ private static final int cant_individuos=6;///debo cambiar el valor a 6
  private Population population;
 
     public AlgorithmG() {
         population = new Population();
     }
+
+    public Population getPopulation() {
+        return population;
+    }
  
- 
+    
     /**
      * este metodo recibe todos los objetos introducidos 
      * ya sea piezas o el material, para luego formar una poblacion inicial
      * @param obs  es una lista de objetos p
      * @return retorna una plano inicial
      */
- 
- 
-     public  Population inicialPopulation(ArrayList<Objeto> obs) {
+      public  Population inicialPopulation(ArrayList<Objeto> obs) {
          
          Population populat=null;
          Material material=getMaterial(obs);
@@ -77,25 +79,16 @@ public class AlgorithmG {
             Individual indiv1      = tournamentSelection(pop);
             
             Individual indiv2      = tournamentSelection(pop);
+              
+            
             Population newPopul    = reprodictionIndividual(indiv1,indiv2);
             Population newEvol     = crossover(newPopul);
             Population newMutation = mutate(newEvol);
-           
-        //}
-             // Mutate population
-//        for (int i = cant_individuos; i < newPopulation.size(); i++) {
-//            mutate(newPopulation.getIndividual(i));
-//        }
-//
-//        return newPopulation;
-
        
-        return newMutation;
+        //return newMutation;
+        return newEvol;
     }
-  // Crossover individuals, es para cruzar individuos, este caso puede ser piezas
-//    private  Individual crossover(Individual indiv1, Individual indiv2) {
-//      return null;
-//    }
+
         // Mutate an individual
     /**
      * este metodo no esta siendo usado
@@ -119,6 +112,7 @@ public class AlgorithmG {
      * @return 
      */
     private  Individual tournamentSelection(Population pop) {
+        
         int size=pop.cantIndividual();  
          int fitness_mejor=10000;// iniciando en 100 porque el fitnes es cada
          int pos_mejor=0;
@@ -142,6 +136,7 @@ public class AlgorithmG {
         ArrayList<Individual> newInd = new ArrayList<>();
          for (int i = 0; i < cant_individuos/pressure; i++) {
              newInd.add(indiv1);
+             
             
         }
          for (int i = 0; i < cant_individuos/pressure; i++) {
@@ -161,16 +156,19 @@ public class AlgorithmG {
     private Population crossover(Population newPopul) {
         Population newPopC=new Population();
         ArrayList<Individual> ind =  newPopul.getIndividuos();
+        
         newPopC.addIndividual(ind.get(0));
         int j=3;
         int i=1;
         for (i = 1; i <=2 ; i++) {
+            
            Individual newInd = cross(ind.get(i),ind.get(j));
            newPopC.addIndividual(newInd);
         }
          j=4;
         for (i = 1; i <=2 ; i++) {
            Individual newInd = cross(ind.get(i),ind.get(j));
+           
            newPopC.addIndividual(newInd);
         }        
      return newPopC;
@@ -187,6 +185,7 @@ public class AlgorithmG {
         for (int i = 0; i < piezas.size(); i++) {
             ind1.reIniciar();
             ind1.generateIndividual();
+           // System.out.println("creze exitoso");
         }
         return ind1;
     }

@@ -6,12 +6,14 @@
 package Vista;
 
 import Controlador.Controlador;
+
 import Modelo.AlgorithmG;
 import Modelo.Individual;
 import Modelo.Material;
 import Modelo.Medida;
 import Modelo.Objeto;
 import Modelo.Piece;
+
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
@@ -24,7 +26,9 @@ public class Interface extends javax.swing.JFrame {
     /**
      * Creates new form Interface
      */
+   Controlador control;// con este controlador debes trabajar 
     public Interface() {
+        control = Controlador.getControlador();
         this.setUndecorated(false);
         this.setAlwaysOnTop(true);
         this.setResizable(true);
@@ -186,31 +190,33 @@ public class Interface extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(151, 151, 151)
-                            .addComponent(jLabel5))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(151, 151, 151)
-                            .addComponent(altoP, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(btnTamPieza))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(41, 41, 41)
-                            .addComponent(anchoP, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGap(21, 21, 21)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel9)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel8))
-                                    .addGap(92, 92, 92)
-                                    .addComponent(jLabel7))))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel8))
+                                .addGap(92, 92, 92)
+                                .addComponent(jLabel7))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(130, 130, 130)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(altoP, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTamPieza))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(anchoP, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -232,8 +238,8 @@ public class Interface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109))
         );
 
         jLabel10.setText("FITNES=");
@@ -421,24 +427,13 @@ public class Interface extends javax.swing.JFrame {
     private void btnTamPiezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTamPiezaActionPerformed
         String altoPi = altoP.getText();
         String anchoPi = anchoP.getText();
-        //int altoPiezas[]= null;
-        //int anchoPiezas[]=null;
-        //int i=0;
-        //while(altoPi != "" && anchoPi !=""){
-            int altoPieza = Integer.parseInt(altoPi);
-            int anchoPieza = Integer.parseInt(anchoPi);
-            //altoPiezas[i] = altoPieza;
-            //anchoPiezas[i] = anchoPieza;
-            //for(int j=0; j< anchoPiezas.length ; j++){
-                //System.out.println("p" + j + an);
-                
-                String tex = "Pieza alto="+altoPieza + "ancho=" +anchoPieza;
-                piezas.setText(tex);
-      
-            //}
-        //}
+        int altoPieza = Integer.parseInt(altoPi);
+        int anchoPieza = Integer.parseInt(anchoPi);
+            String tex = "Pieza anadida: alto = "+altoPieza + " ancho = " +anchoPieza;
+            piezas.setText(tex);
             altoP.setText("");
-                anchoP.setText("");
+            anchoP.setText("");
+            anadir(altoPieza, anchoPieza);
         
     }//GEN-LAST:event_btnTamPiezaActionPerformed
 
@@ -451,14 +446,8 @@ public class Interface extends javax.swing.JFrame {
                 int anchoTela = Integer.parseInt(anchoTe);
                 String altoTe = altoT.getText();
                 int altoTela = Integer.parseInt(altoTe);
-                System.out.println(altoTela);
-                System.out.println(anchoTela);
-                int tela[] = null;
-                tela[1]= anchoTela;
-                tela[2]=altoTela;
-                anchoT.setText("");
-                altoT.setText("");
-       
+                anadir(altoTela,anchoTela);
+      // control.inicio(obs);//mandar todo 
            
     }//GEN-LAST:event_btnTamMaterialActionPerformed
 
@@ -471,7 +460,10 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_fitnessActionPerformed
 
     private void btnOptFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOptFinalActionPerformed
-            fitness.setText("");
+        Individual newInd1 = control.optimizar();    
+        int fit = newInd1.getFitness();
+        String fitnes = Integer.toString(fit);
+            fitness.setText(fitnes);
             matUsado.setText("");
             matDesper.setText("");
     }//GEN-LAST:event_btnOptFinalActionPerformed
@@ -516,43 +508,10 @@ public class Interface extends javax.swing.JFrame {
         });
         
         
-        Controlador control  = Controlador.getControlador();
-        AlgorithmG ag1 = new AlgorithmG();
-        control.setAlgorithmG(ag1);
-        Piece p1             = new Piece(new Medida(3,"cm"),new Medida(4,"cm"),"p1");
-        Piece p2             = new Piece(new Medida(3,"cm"),new Medida(3,"cm"),"p2");
-        Piece p3             = new Piece(new Medida(2,"cm"),new Medida(1,"cm"),"p3");
-        Piece p4             = new Piece(new Medida(3,"cm"),new Medida(1,"cm"),"p4");
-        Piece p5             = new Piece(new Medida(2,"cm"),new Medida(2,"cm"),"p5");
-        Material m1          = new Material(new Medida(10,"cm"),new Medida(10,"cm"),"material1");
-        ArrayList<Objeto> obj= new ArrayList<>();
-        
-        obj.add(m1);
-        obj.add(p1);
-        obj.add(p2);
-        obj.add(p3);
-        obj.add(p4);
-        obj.add(p5);
-        Individual ind1 = control.inicio(obj);
-        System.out.println("la matriz es de: " + ind1.getName());
-        Objeto [][] piezas= ind1.getPieces();
-        
-        print(piezas);
-        
         
     }
-    private static void print(Objeto[][] piezas) {
+    public static String anadir(int alto, int ancho){
         
-        for (int i = 0; i < piezas.length; i++) {
-            for (int j = 0; j <piezas[0].length; j++) {
-                if(piezas[i][j]!=null)
-                    System.out.print(piezas[i][j].getName());
-                else
-                    System.out.print("v*");
-            }
-            System.out.println();
-        }
-        System.out.println("=============================================================");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
