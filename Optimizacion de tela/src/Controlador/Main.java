@@ -12,7 +12,9 @@ import Modelo.Medida;
 import Modelo.Objeto;
 import Modelo.Piece;
 import Vista.Interface;
+import Vista.panelTela;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 
 /**
  *
@@ -51,7 +53,7 @@ public class Main {
         Objeto [][] piezas= ind1.getPieces();
         
         printIni(piezas);
-        
+        dibujar(piezas);
         for (int i = 0; i < 10000; i++) {
             
         }
@@ -100,5 +102,22 @@ public class Main {
             System.out.println();
         }
         System.out.println("=============================================================");
+    }
+    
+    public static void dibujar(Objeto[][] obs){
+     panelTela panel = new panelTela(obs);
+ 
+    // create a basic JFrame
+    JFrame.setDefaultLookAndFeelDecorated(true);
+    JFrame frame = new JFrame("JFrame Color Example");
+    frame.setSize(100,100);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 
+    // add panel to main frame
+    frame.add(panel);
+ 
+    frame.setVisible(true);
+ 
+    
     }
 }

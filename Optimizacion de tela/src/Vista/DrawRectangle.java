@@ -12,7 +12,7 @@ public class DrawRectangle {
  
   public static void main(String[] arguments) {
     
-   panelTela panel = new panelTela();
+  /* panelTela panel = new panelTela();
  
     // create a basic JFrame
     JFrame.setDefaultLookAndFeelDecorated(true);
@@ -24,7 +24,7 @@ public class DrawRectangle {
     frame.add(panel);
  
     frame.setVisible(true);
- 
+ */
   }
 }
  

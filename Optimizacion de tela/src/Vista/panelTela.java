@@ -6,6 +6,8 @@
 package Vista;
 
 import Controlador.Controlador;
+import Modelo.Individual;
+import Modelo.Objeto;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.JPanel;
@@ -14,19 +16,25 @@ import javax.swing.JPanel;
  *
  * @author Dayne
  */
-class panelTela extends JPanel {
+public class panelTela extends JPanel {
     
     int [][] matriz;
     Color [] colors;
     Controlador control;
+
     
  /*   public panelTela(int [][] m){
     colors = new Color[]{Color.red, Color.BLUE, Color.CYAN, Color.MAGENTA, Color.green, Color.ORANGE, Color.YELLOW,Color.DARK_GRAY};  
     matriz = m;
     }*/
-    public panelTela(){
-    control = Controlador.getControlador();
-    colors = new Color[]{Color.black,Color.red, Color.BLUE, Color.CYAN, Color.MAGENTA, Color.green, Color.ORANGE, Color.YELLOW,Color.DARK_GRAY};  
+    public panelTela(Objeto[][] obs){
+         
+    //control = Controlador.getControlador();
+    //Individual ind = control.getInicio();
+    //Objeto[][] obs = ind.getPieces();
+    colors = new Color[]{Color.black,Color.red, Color.BLUE, Color.CYAN, Color.MAGENTA, Color.green, Color.ORANGE, Color.YELLOW,Color.DARK_GRAY,Color.red, Color.BLUE, Color.CYAN};      
+    
+  /*  
     int [][] ma ={     { 0, 2, 2, 3, 3 },
                        { 0, 2, 2, 3, 3 },
                        { 0, 0, 0, 0, 0 },
@@ -34,14 +42,24 @@ class panelTela extends JPanel {
                        { 1, 1, 0, 0, 4 },
                        { 1, 1, 0, 0, 4 }
                              };
+    
     int[][] matrizT = new int[ma[0].length][ma.length];
     for (int x=0; x < ma.length; x++) {
   for (int y=0; y < ma[x].length; y++) {
     matrizT[y][x] = ma[x][y];
   }
-}
+}*/
+    int[][] matrizT = new int[obs[0].length][obs.length];
+  
+    for (int x=0; x < obs.length; x++) {
+  for (int y=0; y < obs[x].length; y++) {
+                     if(obs[x][y]==null)
+                    matrizT[y][x]=0;
+                else
+    matrizT[y][x] = Integer.parseInt((obs[x][y].getName()).substring(1));
+  
     matriz = matrizT;
-    }
+    }}}
     
 
   public void paint(Graphics g) {
@@ -55,9 +73,8 @@ class panelTela extends JPanel {
   for (int i = 0; i < fil; i++) {  //número de filas
      for (int j = 0; j < col; j++) { //número de columnas de cada fila
          pintarPieza(i*10, j*10, matriz[i][j], g);
-     }
-     
-}
+     }    
+}System.out.println(fil +" "+ col);
     
   }
   
